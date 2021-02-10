@@ -67,6 +67,10 @@ namespace ConsoleUI
                 Console.WriteLine("Renk Id : " + color.ColorId + " Renk : " + color.ColorName);
             }
 
+            foreach (var car in carManager.GetCarDetailDtos())
+            {
+                Console.WriteLine("{0} / {1} / {2} / {3}" , car.CarName , car.BrandName , car.ColorName , car.DailyPrice);
+            }
         }
     }
 }

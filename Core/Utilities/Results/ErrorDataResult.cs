@@ -13,7 +13,7 @@ namespace Core.Utilities.Results
 
         public ErrorDataResult(string message):base(default, false, message)
         {
-
+             
         }
 
         public ErrorDataResult(V data):base(data, false)

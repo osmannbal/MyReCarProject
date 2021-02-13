@@ -13,7 +13,7 @@ namespace Core.Utilities.Results
 
         public DataResult(V data, bool success) : base(success)
         {
-            Data = data;
+            Data = data; 
         }
         public V Data { get; }
     }

@@ -9,3 +9,4 @@ namespace Core.Utilities.Results
         V Data { get; }
     }
 }
+ 

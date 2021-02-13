@@ -13,7 +13,7 @@ namespace Core.Utilities.Results
 
         public Result(bool succes)
         {
-            Success = succes;
+            Success = succes; 
         }
 
         public bool Success { get; }

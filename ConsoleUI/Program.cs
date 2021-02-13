@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Business.Constants;
 using DataAccess.Concrete.EntityFramework;
 using System;
 
@@ -9,71 +10,90 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
             CarManager carManager = new CarManager(new EfCarDal());
-
-            foreach (var car in carManager.GetAll())
+            var result = carManager.GetAll();
+            if (result.Success == true)
             {
-                if (car.Description.Length > 1)
+                foreach (var car in carManager.GetAll().Data)
                 {
-                    if (car.DailyPrice > 0)
+                    if (car.CarName.Length > 1)
                     {
-                        Console.WriteLine("Araba Id : " + car.CarId +
+                        if (car.DailyPrice > 0)
+                        {
+                            Console.WriteLine("Araba Id : " + car.CarId +
                             " / Araba adı : " + car.CarName +
                             " / Günlük fiyatı :  " + car.DailyPrice +
                             " / Model Yılı : " + car.ModelYear +
                             " / Özellikler : " + car.Description
                             );
+                        }
+                        else
+                        {
+                            Console.WriteLine(Messages.CarDailyPriceInvalid);
+                        }
+
                     }
                     else
                     {
-                        Console.WriteLine("Araba günlük fiyatı 0'dan büyük olmalıdır.");
+                        Console.WriteLine(Messages.CarNameInvalid);
                     }
-
                 }
-                else
-                {
-                    Console.WriteLine("Araba ismi en az 2 harf olmalıdır.");
-                }
-
-
-
             }
-
-            foreach (var car in carManager.GetAllByCarId(1))
+            else
             {
-                Console.WriteLine("Araba Id : " + car.CarId +
-                            " / Araba adı : " + car.CarName +
-                            " / Günlük fiyatı :  " + car.DailyPrice +
-                            " / Model Yılı : " + car.ModelYear +
-                            " / Özellikler : " + car.Description
-                            );
+                Console.WriteLine(result.Message);
             }
 
+
+
+
+           
+            
             BrandManager brandManager = new BrandManager(new EfBrandDal());
-            foreach (var brand in brandManager.GetAll())
+            var result2 = brandManager.GetAll();
+            if (result2.Success==true)
             {
-                Console.WriteLine("Marka Id : " + brand.BrandId + " / Marka : " +  brand.BrandName);
+                foreach (var brand in brandManager.GetAll().Data)
+                {
+                    Console.WriteLine("Marka Id : " + brand.BrandId + " / Marka : " + brand.BrandName);
+                }
             }
+            else
+            {
+                Console.WriteLine(result2.Message);
+            }
+            
 
-            foreach (var brand in brandManager.GetCarsByBrandId(1))
-            {
-                Console.WriteLine("Marka Id : " + brand.BrandId + " / Marka : " + brand.BrandName);
-            }
+            
 
             ColorManager colorManager = new ColorManager(new EfColorDal());
-            foreach (var color in colorManager.GetAll())
+            var result3 = colorManager.GetAll();
+            if (result3.Success==true)
             {
-                Console.WriteLine("Renk Id : " + color.ColorId + " / Renk : " + color.ColorName);
+                foreach (var color in colorManager.GetAll().Data)
+                {
+                    Console.WriteLine("Renk Id : " + color.ColorId + " / Renk : " + color.ColorName);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result3.Message);
             }
 
-            foreach (var color in colorManager.GetCarsByColorId(2))
-            {
-                Console.WriteLine("Renk Id : " + color.ColorId + " / Renk : " + color.ColorName);
-            }
 
-            foreach (var car in carManager.GetCarDetailDtos())
+
+            var result4 = carManager.GetCarDetailDtos();
+            if (result4.Success==true)
             {
-                Console.WriteLine("{0} / {1} / {2} / {3}" , car.CarName , car.BrandName , car.ColorName , car.DailyPrice);
+                foreach (var car in carManager.GetCarDetailDtos().Data)
+                {
+                    Console.WriteLine("{0} / {1} / {2} / {3}", car.CarName, car.BrandName, car.ColorName, car.DailyPrice);
+                }
             }
+            else
+            {
+                Console.WriteLine(result4.Message);
+            }
+            
         }
     }
 }

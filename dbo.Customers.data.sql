@@ -1,0 +1,6 @@
+﻿INSERT INTO [dbo].[Customers] ([CustomerId], [CompanyName], [UserId]) VALUES (1, N'C1', 1)
+INSERT INTO [dbo].[Customers] ([CustomerId], [CompanyName], [UserId]) VALUES (2, N'C2', 2)
+INSERT INTO [dbo].[Customers] ([CustomerId], [CompanyName], [UserId]) VALUES (3, N'C3', 3)
+INSERT INTO [dbo].[Customers] ([CustomerId], [CompanyName], [UserId]) VALUES (4, N'C4', 4)
+INSERT INTO [dbo].[Customers] ([CustomerId], [CompanyName], [UserId]) VALUES (5, N'C5', 5)
+INSERT INTO [dbo].[Customers] ([CustomerId], [CompanyName], [UserId]) VALUES (6, N'C6', NULL)

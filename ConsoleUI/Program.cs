@@ -31,7 +31,7 @@ namespace ConsoleUI
             var result8 = customerManager.Add(new Customer { UserId = 4, CustomerId = 9, CompanyName = "C7" });
             Console.WriteLine(result8.Message);
 
-            var result9 = customerManager.Uptade(new Customer { CustomerId = 2, UserId = 2, CompanyName = "Tunç" });
+            var result9 = customerManager.Update(new Customer { CustomerId = 2, UserId = 2, CompanyName = "Tunç" });
             Console.WriteLine(result9.Message);
 
             var result12 = customerManager.GetAll();
@@ -45,7 +45,7 @@ namespace ConsoleUI
             var result10 = userManager.Add(new User { UserId = 6, FirstName = "Henry", LastName = "Onyekuru", Email = "henry@gmail.com", Password = "hdmnd6521d", });
             Console.WriteLine(result10.Message);
 
-            var result11 = userManager.Uptade(new User { UserId = 4, FirstName = "Nando", LastName = "Muslera", Email = "nando@gmail.com", Password = "nfls55sals8", });
+            var result11 = userManager.Update(new User { UserId = 4, FirstName = "Nando", LastName = "Muslera", Email = "nando@gmail.com", Password = "nfls55sals8", });
             Console.WriteLine(result11.Message);
 
             var result13 = userManager.GetAll();

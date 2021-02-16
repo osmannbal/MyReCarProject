@@ -38,7 +38,7 @@ namespace Business.Concrete
             return new SuccessDataResult<User>(_userDal.Get(u=> u.UserId == userId), Messages.UsersListed);
         }
 
-        public IResult Uptade(User user)
+        public IResult Update(User user)
         {
             _userDal.Update(user);
             return new SuccessResult(Messages.UserUpdated);

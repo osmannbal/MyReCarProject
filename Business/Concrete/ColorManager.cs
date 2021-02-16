@@ -43,7 +43,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Color>(_colorDal.Get(c=>c.ColorId==colorId));
         }
 
-        public IResult Uptade(Color color)
+        public IResult Update(Color color)
         {
             _colorDal.Update(color);
             return new SuccessResult(Messages.ColorUpdated);

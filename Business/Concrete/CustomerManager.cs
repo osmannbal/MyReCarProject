@@ -40,7 +40,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Customer>(_customerDal.Get(c => c.CustomerId == customerId), Messages.CustomersListed);
         }
 
-        public IResult Uptade(Customer customer)
+        public IResult Update(Customer customer)
         {
             _customerDal.Update(customer);
             return new SuccessResult(Messages.CustomerUpdated);

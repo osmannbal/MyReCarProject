@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
@@ -20,8 +22,7 @@ namespace Business.Concrete
             _rentalDal = rentalDal;
         }
 
-        
-
+        [SecuredOperation("rental.delete")]
         public IResult Delete(Rental rental)
         {
             _rentalDal.Delete(rental);
@@ -38,6 +39,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.RentalId == rentalId), Messages.RentalsListed);
         }
 
+        [SecuredOperation("rental.add")]
         [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental rental)
         {
@@ -51,11 +53,18 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarReceived);
         }
 
+        [SecuredOperation("rental.update")]
         [ValidationAspect(typeof(RentalValidator))]
         public IResult Update(Rental rental)
         {
             _rentalDal.Update(rental);
             return new SuccessResult(Messages.RentalUpdated);
+        }
+
+        [TransactionScopeAspect]
+        public IResult Transactional(Rental rental)
+        {
+            throw new NotImplementedException();
         }
     }
 }

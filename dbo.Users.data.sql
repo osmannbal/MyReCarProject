@@ -1,5 +1,0 @@
-﻿INSERT INTO [dbo].[Users] ([UserId], [FirstName], [LastName], [Email], [Password]) VALUES (1, N'Osman', N'Bal', N'osmanbal@gmail.com', N'1234564511')
-INSERT INTO [dbo].[Users] ([UserId], [FirstName], [LastName], [Email], [Password]) VALUES (2, N'Kerem', N'Aktürk', N'keremak@gmail.com', N'758şlk75ı')
-INSERT INTO [dbo].[Users] ([UserId], [FirstName], [LastName], [Email], [Password]) VALUES (3, N'Marcao', N'Teixeira', N'marcaotei@gmail.com', N'75kfyuebv56')
-INSERT INTO [dbo].[Users] ([UserId], [FirstName], [LastName], [Email], [Password]) VALUES (4, N'Ömer', N'Bayram', N'ömer19@gmail.com', N'752139kksr')
-INSERT INTO [dbo].[Users] ([UserId], [FirstName], [LastName], [Email], [Password]) VALUES (5, N'Ryan', N'Donk', N'ryan5@gmail.com', N'755rpk6317')

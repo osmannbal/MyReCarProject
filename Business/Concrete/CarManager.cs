@@ -47,7 +47,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Car>(_carDal.Get(c=> c.CarId == carId));
         }
 
-        [SecuredOperation("car.add")]
+        [SecuredOperation("Add")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
@@ -56,7 +56,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarAdded);
         }
 
-        [SecuredOperation("car.update")]
+        [SecuredOperation("Update")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Update(Car car)
         {
@@ -64,7 +64,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarUpdated);
         }
 
-        [SecuredOperation("car.delete")]
+        [SecuredOperation("Delete")]
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);

@@ -21,12 +21,13 @@ namespace Core.Utilities.Security.Jwt
         public JwtHelper(IConfiguration configuration)
         {
             Configuration = configuration;
-            _tokenOptions = configuration.GetSection(key: "TokenOptions").Get<TokenOptions>();
-            _accessTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration);
+            _tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+            
         }
 
         public AccessToken CreateToken(User user, List<OperationClaim> operationClaims)
         {
+            _accessTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration);
             var securityKey = SecurityKeyHelper.CreateSecurityKey(_tokenOptions.SecurityKey);
             var signingCredentials = SigningCredentialsHelper.CreateSigningCredentials(securityKey);
             var jwt = CreateJwtSecurityToken(_tokenOptions, user, signingCredentials, operationClaims);
@@ -43,8 +44,8 @@ namespace Core.Utilities.Security.Jwt
         public JwtSecurityToken CreateJwtSecurityToken(TokenOptions tokenOptions, User user, SigningCredentials signingCredentials, List<OperationClaim> operationClaims)
         {
             var jwt = new JwtSecurityToken(
-                issuer: tokenOptions.Issuer,
                 audience: tokenOptions.Audience,
+                issuer: tokenOptions.Issuer,
                 expires: _accessTokenExpiration,
                 notBefore: DateTime.Now,
                 claims: SetClaims(user, operationClaims),
@@ -56,9 +57,9 @@ namespace Core.Utilities.Security.Jwt
         private IEnumerable<Claim> SetClaims(User user, List<OperationClaim> operationClaims)
         {
             var claims = new List<Claim>();
-            claims.AddName($"{user.FirstName} {user.LastName}");
             claims.AddNameIdentifier(user.Id.ToString());
             claims.AddEmail(user.Email);
+            claims.AddName($"{user.FirstName} {user.LastName}");
             claims.AddRoles(operationClaims.Select(o => o.Name).ToArray());
             return claims;
         }

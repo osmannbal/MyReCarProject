@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
@@ -69,6 +70,18 @@ namespace WebAPI.Controllers
         public IActionResult Delete(Rental rental)
         {
             var result = _rentalService.Delete(rental);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getrental")]
+        public IActionResult GetRentalDetailDtos()
+        {
+            //Thread.Sleep(5000);
+            var result = _rentalService.GetRentalDetailDtos();
             if (result.Success)
             {
                 return Ok(result);

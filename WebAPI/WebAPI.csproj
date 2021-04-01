@@ -5,10 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Images\CarImages\**" />
-    <Content Remove="Images\CarImages\**" />
-    <EmbeddedResource Remove="Images\CarImages\**" />
-    <None Remove="Images\CarImages\**" />
+    <Compile Remove="wwwroot\Images\CarImages\**" />
+    <Content Remove="wwwroot\Images\CarImages\**" />
+    <EmbeddedResource Remove="wwwroot\Images\CarImages\**" />
+    <None Remove="wwwroot\Images\CarImages\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +21,15 @@
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
     <ProjectReference Include="..\Entities\Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Images\1620f29dfe6040b5aaca6a2530fd219a-28-2-2021.jpg" />
+    <None Include="wwwroot\Images\default.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\Car\" />
   </ItemGroup>
 
 

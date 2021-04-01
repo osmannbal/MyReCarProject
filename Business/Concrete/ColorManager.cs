@@ -40,10 +40,10 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<List<Color>> GetAll()
         {
-            if (DateTime.Now.Hour == 23)
-            {
-                return new ErrorDataResult<List<Color>>(Messages.MaintenanceTime);
-            }
+            //if (DateTime.Now.Hour == 23)
+            //{
+            //    return new ErrorDataResult<List<Color>>(Messages.MaintenanceTime);
+            //}
             return new SuccessDataResult<List<Color>>(_colorDal.GetAll(),Messages.ColorsListed);
         }
 

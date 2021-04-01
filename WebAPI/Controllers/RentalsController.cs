@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
+using Core.Aspects.Autofac.Transaction;
 using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -14,7 +16,6 @@ namespace WebAPI.Controllers
     public class RentalsController : ControllerBase
     {
         IRentalService _rentalService;
-
         public RentalsController(IRentalService rentalService)
         {
             _rentalService = rentalService;
@@ -88,5 +89,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+
+        
     }
 }

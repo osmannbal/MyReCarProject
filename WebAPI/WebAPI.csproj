@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\Images\1620f29dfe6040b5aaca6a2530fd219a-28-2-2021 - Copy.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.12" />
   </ItemGroup>
@@ -24,12 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\Images\1620f29dfe6040b5aaca6a2530fd219a-28-2-2021.jpg" />
-    <None Include="wwwroot\Images\default.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\Images\Car\" />
+    <None Include="wwwroot\Images\Car\1620f29dfe6040b5aaca6a2530fd219a-28-2-2021 - Copy.jpg" />
+    <None Include="wwwroot\Images\Car\1620f29dfe6040b5aaca6a2530fd219a-28-2-2021.jpg" />
+    <None Include="wwwroot\Images\Car\default.jpg" />
   </ItemGroup>
 
 

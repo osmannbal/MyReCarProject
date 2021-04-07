@@ -40,7 +40,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.RentalId == rentalId), Messages.RentalsListed);
         }
 
-        [SecuredOperation("Add")]
+        //[SecuredOperation("Add")]
         [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental rental)
         {
@@ -71,6 +71,11 @@ namespace Business.Concrete
         public IDataResult<List<RentalDetailDto>> GetRentalDetailDtos()
         {
             return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetailDtos(), Messages.RentalsListed);
+        }
+
+        public IDataResult<List<Rental>> GetByRentalId(int carId)
+        {
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(c => c.CarId == carId), Messages.RentalsListed);
         }
     }
 }

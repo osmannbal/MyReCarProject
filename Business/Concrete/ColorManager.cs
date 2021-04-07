@@ -22,7 +22,7 @@ namespace Business.Concrete
             _colorDal = colorDal;
         }
 
-        [SecuredOperation("Add")]
+        //[SecuredOperation("Add")]
         [ValidationAspect(typeof(ColorValidator))]
         public IResult Add(Color color)
         {

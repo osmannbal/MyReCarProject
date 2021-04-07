@@ -22,7 +22,7 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
-        [SecuredOperation("Add")]
+        //[SecuredOperation("Add")]
         [ValidationAspect(typeof(BrandValidator))]
         public IResult Add(Brand brand)
         {

@@ -21,7 +21,7 @@ namespace Core.Utilities.FileHelper
             }
 
             var result = newPath(formFile);
-            File.Move(sourcepath, result.path2);
+            File.Move(sourcepath, result.newPath);
             return result.path2;
         }
 
@@ -47,16 +47,16 @@ namespace Core.Utilities.FileHelper
             return new SuccessResult();
         }
 
-        private static (string path, string path2) newPath(IFormFile formFile)
+        private static (string newPath, string path2) newPath(IFormFile formFile)
         {
             FileInfo fileInfo = new FileInfo(formFile.FileName);
             string FileExtension = fileInfo.Extension;
 
             var newPath = Guid.NewGuid()+ FileExtension;
 
-            string path = Environment.CurrentDirectory + @"\wwwroot\Images";
+            string path = Environment.CurrentDirectory + @"\wwwroot\Images\Car";
             string result = $@"{path}\{newPath}";
-            return (result, $"\\Images\\{newPath}");
+            return (result, $"\\Images\\Car\\{newPath}");
 
         }
     }

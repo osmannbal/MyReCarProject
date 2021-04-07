@@ -56,7 +56,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarAdded);
         }
 
-        [SecuredOperation("Update")]
+        //[SecuredOperation("Update")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Update(Car car)
         {

@@ -6,6 +6,7 @@ using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,20 +16,30 @@ namespace Business.Concrete
     public class UserManager : IUserService
     {
         IUserDal _userDal;
-        public UserManager(IUserDal userDal)
+        ICustomerService _customerService;
+        public UserManager(IUserDal userDal, ICustomerService customerService)
         {
             _userDal = userDal;
+            _customerService = customerService;
         }
 
         [ValidationAspect(typeof(UserValidator))]
-        public void Add(User user)
+        public IResult Add(User user)
         {
             _userDal.Add(user);
+            Customer customer = new Customer()
+            {
+                UserId = user.Id,
+                CompanyName = user.LastName
+            };
+            _customerService.Add(customer);
+            return new SuccessResult(Messages.UserAdded);
         }
 
-        public void Delete(User user)
+        public IResult Delete(User user)
         {
             _userDal.Delete(user);
+            return new SuccessResult(Messages.UserDeleted);
             
         }
 
@@ -53,10 +64,17 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(UserValidator))]
-        public void Update(User user)
+        public IResult Update(User user)
         {
             _userDal.Update(user);
+            return new SuccessResult(Messages.UserUpdated);
             
+        }
+
+        public IResult Update(UserForUpdateDto userForUpdateDto)
+        {
+            _userDal.UpdateFor(userForUpdateDto);
+            return new SuccessResult(Messages.UserUpdated);
         }
     }
 }

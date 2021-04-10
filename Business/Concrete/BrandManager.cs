@@ -60,7 +60,7 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-        [SecuredOperation("Update")]
+        //[SecuredOperation("Update")]
         [ValidationAspect(typeof(BrandValidator))]
         public IResult Update(Brand brand)
         {

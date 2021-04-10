@@ -34,6 +34,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  ModelYear = c.ModelYear,
                                  DailyPrice = c.DailyPrice,
                                  Description = c.Description,
+                                 FindexPoint = c.FindexPoint,
                                  ImagePath = context.CarImages.Where(x => x.CarId == c.CarId).FirstOrDefault().ImagePath
                              };
 

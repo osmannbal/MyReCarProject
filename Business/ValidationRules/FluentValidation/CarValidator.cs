@@ -14,6 +14,7 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(c => c.CarName).MinimumLength(2).WithMessage("Araba adı minimum 2 karakterli olmalı!");
             RuleFor(c => c.DailyPrice).NotEmpty().WithMessage("Günlük fiyat boş olamaz!");
             RuleFor(c => c.DailyPrice).GreaterThan(0).WithMessage("Günlük fiyat 0'dan büyük olmalıdır!");
+            RuleFor(c => c.FindexPoint).InclusiveBetween(0, 1900).WithMessage("Findeks puan 0-1900 aralığında olmalıdır.");
         }
     }
 }

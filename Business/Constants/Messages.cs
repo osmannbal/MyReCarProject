@@ -23,6 +23,11 @@ namespace Business.Constants
         public static string ColorUpdated = "Renk güncellendi.";
         public static string ColorDeleted = "Renk silindi.";
 
+        public static string CardsListed = "Kredi kartları listelendi.";
+        public static string CardAdded = "Kredi kartı eklendi.";
+        public static string CardUpdated = "Kredi kartı güncellendi.";
+        public static string CardDeleted = "Kredi Kartı silindi.";
+
         public static string RentalsListed = "Kiralık listesi listelendi.";
         public static string CarRented = "Araba kiralandı.";
         public static string RentalUpdated = "Kiralama işlemi güncellendi.";

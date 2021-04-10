@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using Entities.DTOs;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Concrete.EntityFramework
 {
@@ -21,6 +23,33 @@ namespace DataAccess.Concrete.EntityFramework
                              where userOperationClaim.UserId == user.Id
                              select new OperationClaim { Id = operationClaim.Id, Name = operationClaim.Name };
                 return result.ToList();
+            }
+        }
+
+        public void UpdateFor(UserForUpdateDto userForUpdateDto)
+        {
+            using (var context = new ReCarContext())
+            {
+                User user = new User()
+                {
+                    Id = userForUpdateDto.UserId,
+                    FirstName = userForUpdateDto.FirstName,
+                    LastName = userForUpdateDto.LastName,
+                    Email = userForUpdateDto.Email
+                };
+
+                //Customer customer = new Customer()
+                //{
+                //    CompanyName = userForUpdateDto.CompanyName,
+                //    CustomerId = userForUpdateDto.CustomerId,
+                //    UserId = userForUpdateDto.UserId
+                //};
+                
+                var updatedEntity = context.Entry(user);
+                //var updatedEntity1 = context.Entry(customer);
+                updatedEntity.State = EntityState.Modified;
+                //updatedEntity1.State = EntityState.Modified;
+                context.SaveChanges();
             }
         }
     }

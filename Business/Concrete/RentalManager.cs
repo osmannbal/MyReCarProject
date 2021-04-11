@@ -40,7 +40,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.RentalId == rentalId), Messages.RentalsListed);
         }
 
-        [SecuredOperation("Add")]
+        [SecuredOperation("Login")]
         [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental rental)
         {
@@ -54,7 +54,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarReceived);
         }
 
-        [SecuredOperation("Update")]
+        [SecuredOperation("Login")]
         [ValidationAspect(typeof(RentalValidator))]
         public IResult Update(Rental rental)
         {

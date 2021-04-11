@@ -59,7 +59,7 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-        [SecuredOperation("Update")]
+        [SecuredOperation("Login")]
         [ValidationAspect(typeof(ColorValidator))]
         public IResult Update(Color color)
         {

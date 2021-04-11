@@ -32,10 +32,10 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 User user = new User()
                 {
-                    Id = userForUpdateDto.UserId,
-                    FirstName = userForUpdateDto.FirstName,
-                    LastName = userForUpdateDto.LastName,
-                    Email = userForUpdateDto.Email
+                    Id = userForUpdateDto.User.Id,
+                    FirstName = userForUpdateDto.User.FirstName,
+                    LastName = userForUpdateDto.User.LastName,
+                    Email = userForUpdateDto.User.Email
                 };
 
                 //Customer customer = new Customer()

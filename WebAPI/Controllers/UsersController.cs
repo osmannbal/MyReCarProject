@@ -21,14 +21,15 @@ namespace WebAPI.Controllers
             _userService = userService;
         }
 
-        //[HttpPost("update")]
-        //public IActionResult Update(UserForRegisterDto userForRegisterDto)
-        //{
-        //    var result = _userService.Update(userForRegisterDto);
-        //    if (result.Success)
-        //    {
-
-        //    }
-        //}
+        [HttpPost("update")]
+        public IActionResult UpdateProfile(UserForUpdateDto userForUpdateDto)
+        {
+            var result = _userService.UpdateProfile(userForUpdateDto.User, userForUpdateDto.Password);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }

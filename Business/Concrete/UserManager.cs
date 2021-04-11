@@ -4,6 +4,7 @@ using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.Entities.Concrete;
 using Core.Utilities.Results;
+using Core.Utilities.Security.Hashing;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -27,12 +28,12 @@ namespace Business.Concrete
         public IResult Add(User user)
         {
             _userDal.Add(user);
-            Customer customer = new Customer()
-            {
-                UserId = user.Id,
-                CompanyName = user.LastName
-            };
-            _customerService.Add(customer);
+            //Customer customer = new Customer()
+            //{
+            //    UserId = user.Id,
+            //    CompanyName = user.LastName
+            //};
+            //_customerService.Add(customer);
             return new SuccessResult(Messages.UserAdded);
         }
 
@@ -71,10 +72,23 @@ namespace Business.Concrete
             
         }
 
-        public IResult Update(UserForUpdateDto userForUpdateDto)
+        public IResult UpdateProfile(User user, string password)
         {
-            _userDal.UpdateFor(userForUpdateDto);
-            return new SuccessResult(Messages.UserUpdated);
+            byte[] passwordHash, passwordSalt;
+            HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+            var updated = new User
+            {
+                Id = user.Id,
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt,
+                Status = user.Status,
+                FindexPoint = user.FindexPoint
+            };
+            _userDal.Update(updated);
+            return new SuccessDataResult<User>(Messages.UserUpdated);
         }
     }
 }

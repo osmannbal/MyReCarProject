@@ -56,16 +56,7 @@ namespace WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
-        [HttpPost("update")]
-        public IActionResult Update(UserForUpdateDto userForUpdateDto)
-        {
-            var result = _authService.Update(userForUpdateDto);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
+        
     }
 
     

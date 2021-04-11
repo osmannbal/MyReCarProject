@@ -17,6 +17,6 @@ namespace Business.Abstract
         IResult Add(User user);
         IResult Update(User user);
         IResult Delete(User user);
-        IResult Update(UserForUpdateDto userForUpdateDto);
+        IResult UpdateProfile(User user, string password);
     }
 }

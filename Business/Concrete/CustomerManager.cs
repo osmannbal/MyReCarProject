@@ -23,7 +23,7 @@ namespace Business.Concrete
             _customerDal = customerDal;
         }
 
-        //[SecuredOperation("Add")]
+        [SecuredOperation("Add")]
         [ValidationAspect(typeof(CustomerValidator))]
         public IResult Add(Customer customer)
         {

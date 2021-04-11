@@ -4,6 +4,7 @@ using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using Core.Utilities.Security.Hashing;
 using Core.Utilities.Security.Jwt;
+using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,12 @@ namespace Business.Concrete
     {
         private IUserService _userService;
         private ITokenHelper _tokenHelper;
-
-        public AuthManager(IUserService userService, ITokenHelper tokenHelper)
+        private ICustomerService _customerService;
+        public AuthManager(IUserService userService, ITokenHelper tokenHelper, ICustomerService customerService)
         {
             _userService = userService;
             _tokenHelper = tokenHelper;
+            _customerService = customerService;
         }
 
         public IDataResult<AccessToken> CreateAccessToken(User user)
@@ -58,15 +60,14 @@ namespace Business.Concrete
                 PasswordSalt = passwordSalt,
                 Status = true
             };
+       
             _userService.Add(user);
+
             return new SuccessDataResult<User>(user, Messages.UserRegistered);
+            
         }
 
-        public IDataResult<UserForUpdateDto> Update(UserForUpdateDto userForUpdateDto)
-        {
-            _userService.Update(userForUpdateDto);
-            return new SuccessDataResult<UserForUpdateDto>(Messages.UserUpdated);
-        }
+   
 
         public IResult UserExists(string email)
         {

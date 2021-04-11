@@ -22,7 +22,7 @@ namespace Business.Concrete
             _colorDal = colorDal;
         }
 
-        //[SecuredOperation("Add")]
+        [SecuredOperation("Add")]
         [ValidationAspect(typeof(ColorValidator))]
         public IResult Add(Color color)
         {
@@ -59,7 +59,7 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-        //[SecuredOperation("Update")]
+        [SecuredOperation("Update")]
         [ValidationAspect(typeof(ColorValidator))]
         public IResult Update(Color color)
         {

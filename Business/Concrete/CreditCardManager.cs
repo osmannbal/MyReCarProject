@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -19,6 +20,7 @@ namespace Business.Concrete
             _creditCardDal = creditCardDal;
         }
 
+        [SecuredOperation("Login")]
         [ValidationAspect(typeof(CreditCardValidator))]
         public IResult Add(CreditCard creditCard)
         {
@@ -26,6 +28,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CardAdded);
         }
 
+        [SecuredOperation("Login")]
         public IResult Delete(CreditCard creditCard)
         {
             _creditCardDal.Delete(creditCard);
@@ -42,7 +45,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CreditCard>>(_creditCardDal.GetAll(c=> c.Id == id), Messages.CardsListed);
         }
 
-
+        [SecuredOperation("Login")]
         [ValidationAspect(typeof(CreditCardValidator))]
         public IResult Update(CreditCard creditCard)
         {

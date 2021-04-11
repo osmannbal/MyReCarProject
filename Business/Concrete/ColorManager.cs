@@ -22,7 +22,7 @@ namespace Business.Concrete
             _colorDal = colorDal;
         }
 
-        [SecuredOperation("Add")]
+        [SecuredOperation("Admin")]
         [ValidationAspect(typeof(ColorValidator))]
         public IResult Add(Color color)
         {
@@ -30,7 +30,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.ColorAdded);
         }
 
-        [SecuredOperation("Delete")]
+        [SecuredOperation("Admin")]
         public IResult Delete(Color color)
         {
             _colorDal.Delete(color);
@@ -59,7 +59,7 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-        [SecuredOperation("Login")]
+        [SecuredOperation("Admin")]
         [ValidationAspect(typeof(ColorValidator))]
         public IResult Update(Color color)
         {

@@ -23,7 +23,7 @@ namespace Business.Concrete
             _customerDal = customerDal;
         }
 
-        [SecuredOperation("Add")]
+        [SecuredOperation("Login")]
         [ValidationAspect(typeof(CustomerValidator))]
         public IResult Add(Customer customer)
         {
@@ -31,7 +31,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CustomerAdded);
         }
 
-        [SecuredOperation("Delete")]
+        [SecuredOperation("Login")]
         public IResult Delete(Customer customer)
         {
             _customerDal.Delete(customer);
@@ -59,7 +59,7 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-        [SecuredOperation("Update")]
+        [SecuredOperation("Login")]
         [ValidationAspect(typeof(CustomerValidator))]
         public IResult Update(Customer customer)
         {

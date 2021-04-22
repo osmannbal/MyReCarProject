@@ -1,5 +1,5 @@
 # **MyReCarProject - BackEnd**
-Araba kiralama projesi, C# dilinde SOLID prensipleri uygulanarak Kurumsal Katmanlı Mimari yapısıyla geliştirilmiştir.
+Araba kiralama projesinin BackEnd kısmı C# dilinde SOLID prensipleri uygulanarak Kurumsal Katmanlı Mimari yapısıyla geliştirilmiştir.
 
 # Katmanlar
 **Entities:** Veritabanındaki tabloların nesnesinin oluşturulduğu katmandır.<br>

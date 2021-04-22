@@ -10,7 +10,7 @@ Araba kiralama projesi, C# dilinde SOLID prensipleri uygulanarak Kurumsal Katman
 
 # Kullanılan Teknolojiler
 Asp.Net Core<br>
-MsSql<br>
+MSSQL<br>
 EntityFramework Core<br>
 Autofac<br>
 FluentValidation<br>

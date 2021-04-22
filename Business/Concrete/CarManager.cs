@@ -101,12 +101,12 @@ namespace Business.Concrete
 
         public IDataResult<List<CarDetailDto>> GetColorDetailDtos(int colorId)
         {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetailDtos(c => c.ColorId == colorId), Messages.CarsListed);
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetailDtos(a => a.ColorId == colorId), Messages.CarsListed);
         }
 
         public IDataResult<List<CarDetailDto>> GetCarsByFilter(int brandId, int colorId)
         {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetailDtos(p => p.BrandId == brandId && p.ColorId == colorId), Messages.CarsListed);
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetailDtos(d => d.BrandId == brandId && d.ColorId == colorId), Messages.CarsListed);
         }
     }
 }

@@ -1,4 +1,4 @@
-# **MyReCarProject - Backend**
+# **MyReCarProject - BackEnd**
 Araba kiralama projesi, C# dilinde SOLID prensipleri uygulanarak Kurumsal Katmanlı Mimari yapısıyla geliştirilmiştir.
 
 # Katmanlar
